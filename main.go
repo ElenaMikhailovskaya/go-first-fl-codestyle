@@ -51,7 +51,7 @@ func special(charName, charClass string) string {
 }
 
 // здесь обратите внимание на имена параметров
-func start_training(charName, charClass string) string {
+func startTraining(charName, charClass string) string {
 	if charClass == "warrior" {
 		fmt.Printf("%s, ты Воитель - отличный боец ближнего боя.\n", charName)
 	}
@@ -75,24 +75,22 @@ func start_training(charName, charClass string) string {
 		fmt.Print("Введи команду: ")
 		fmt.Scanf("%s\n", &cmd)
 
-		if cmd == "attack" {
+		switch {
+		case cmd == "attack":
 			fmt.Println(attack(charName, charClass))
-		}
-
-		if cmd == "defence" {
+		case cmd == "defence":
 			fmt.Println(defence(charName, charClass))
-		}
-
-		if cmd == "special" {
+		case cmd == "special":
 			fmt.Println(special(charName, charClass))
+		default:
+			fmt.Println("неизвестная команда")
 		}
 	}
-
 	return "тренировка окончена"
 }
 
 // обратите внимание на имя функции и имена переменных
-func choise_char_class() string {
+func choiseCharClass() string {
 	var approveChoice string
 	var charClass string
 
@@ -127,9 +125,9 @@ func main() {
 	fmt.Println("Ты можешь выбрать один из трёх путей силы:")
 	fmt.Println("Воитель, Маг, Лекарь")
 
-	charClass := choise_char_class()
+	charClass := choiseCharClass()
 
-	fmt.Println(start_training(charName, charClass))
+	fmt.Println(startTraining(charName, charClass))
 }
 
 func randint(min, max int) int {
